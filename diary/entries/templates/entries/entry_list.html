@@ -1,10 +1,16 @@
-{% for entry in entry_list %}
+{% extends 'base.html' %}
 
-<article>
-    <h2>{{ entry.created|date:'Y-m-d H:i' }}</h2>
-    <h3>
-        <a href="{% url 'entry-detail' entry.id %}">{{ entry.title }}</a>
-    </h3>
-</article>
+{% block content %}
 
-{% endfor %}
+    {% for entry in entry_list %}
+
+    <article>
+        <h2>{{ entry.created|date:'Y-m-d H:i' }}</h2>
+        <h3>
+            <a href="{% url 'entry-detail' entry.id %}">{{ entry.title }}</a>
+        </h3>
+    </article>
+
+    {% endfor %}
+
+{% endblock %}
