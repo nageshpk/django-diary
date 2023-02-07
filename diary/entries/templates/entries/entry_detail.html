@@ -1,7 +1,13 @@
-<article>
+{% extends 'main.html' %}
 
-    <h2>{{ entry.created }}</h2>
-    <h3>{{ entry.title }}</h3>
-    <p>{{ entry.content }}</p>
+{% block content %}
 
-</article>
+    <article>
+
+        <h2>{{ entry.created }}</h2>
+        <h3>{{ entry.title }}</h3>
+        <p>{{ entry.content }}</p>
+
+    </article>
+
+{% endblock %}
