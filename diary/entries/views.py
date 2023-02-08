@@ -42,10 +42,11 @@ def deleteEntry(request, pk):
 
 def editEntry(request, pk):
     entry = Enrty.objects.get(id=pk)
-    if request.method == "POST":
-        title = request.POST.get('title')
-        content = request.POST.get('body')
-        entry = Enrty.objects.update(id=pk, title=title, content=content)
-        return redirect('entry-detail', pk)
     context = {'entry': entry}
+    if request.method == "POST":
+        entry.title = request.POST.get('title')
+        entry.content = request.POST.get('body')
+        entry.save()
+        return redirect('entry-detail', pk)
+    
     return render(request, 'entries/create_entry.html', context)
