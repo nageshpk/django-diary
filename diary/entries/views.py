@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Enrty
 from django.http import HttpResponse
 
@@ -22,4 +22,16 @@ def createEntry(request):
         content = request.POST.get('body')
         entry = Enrty.objects.create(title=title, content=content)
         entry.save()
+        return redirect('home')
     return render(request, 'entries/create_entry.html')
+
+
+def deleteEntry(request, pk):
+    entry = Enrty.objects.get(id=pk)
+    
+    if request.method == "POST":
+        entry.delete()
+        return redirect('home')
+    
+    context = {'obj': entry}
+    return render(request, 'entries/delete_entry.html', context)
