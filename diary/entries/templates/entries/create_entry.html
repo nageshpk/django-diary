@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% block content %}
 
+{% if page == 'create' %}
 <div>
 
     <form method="POST" action="">
@@ -15,5 +16,24 @@
     </form>
 
 </div>
+
+{% else %}
+
+<div>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label>Title</label>
+        <input type="textarea" name="title" placeholder="Title" value="{{entry.title}}">
+        
+        <label>Content</label>
+        <input type="textarea" name="body" placeholder="Enter the content..." value="{{entry.content}}">
+
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+{% endif %}
 
 {% endblock %}
