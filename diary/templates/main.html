@@ -11,6 +11,12 @@
 <body>
     <h1><a href="{% url 'home' %}">My Diary</a></h1>
 
+    <div>
+        <a href="">Login</a>
+    </div>
+
+    <hr>
+
     {% if messages %}
         <ul class="messages">
         {% for message in messages %}
