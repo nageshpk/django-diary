@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label>Title</label>
+        <input type="textarea" name="title" placeholder="Title">
+        
+        <label>Content</label>
+        <input type="textarea" name="body" placeholder="Enter the content...">
+
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+{% endblock %}

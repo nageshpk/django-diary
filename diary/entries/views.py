@@ -14,3 +14,12 @@ def entryDetail(request, pk):
     entry = Enrty.objects.get(id=pk)
     context = {'entry': entry}
     return render(request, 'entries/entry_detail.html', context)
+
+
+def createEntry(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('body')
+        entry = Enrty.objects.create(title=title, content=content)
+        entry.save()
+    return render(request, 'entries/create_entry.html')
