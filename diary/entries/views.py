@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Enrty
+from django.contrib import messages
 
 # Create your views here.
 
@@ -22,6 +23,7 @@ def createEntry(request):
         content = request.POST.get('body')
         entry = Enrty.objects.create(title=title, content=content)
         entry.save()
+        messages.success(request, "New entry created")
         return redirect('home')
     
     context = {'page': page}
@@ -33,6 +35,7 @@ def deleteEntry(request, pk):
     
     if request.method == "POST":
         entry.delete()
+        messages.info(request, "Entry deleted")
         return redirect('home')
     
     context = {'obj': entry}
@@ -46,6 +49,7 @@ def editEntry(request, pk):
         entry.title = request.POST.get('title')
         entry.content = request.POST.get('body')
         entry.save()
+        messages.info(request, "Updated !!")
         return redirect('entry-detail', pk)
     
     return render(request, 'entries/create_entry.html', context)
