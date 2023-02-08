@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import Enrty
-from django.http import HttpResponse
 
 # Create your views here.
 
